@@ -1,0 +1,60 @@
+name: Generate Documentation PDF
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'TECHNICAL_DOCUMENTATION.md'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate-pdf:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc texlive-xetex texlive-fonts-recommended texlive-plain-generic
+      
+      - name: Generate PDF from Markdown
+        run: |
+          pandoc TECHNICAL_DOCUMENTATION.md \
+            -o TECHNICAL_DOCUMENTATION.pdf \
+            --pdf-engine=xelatex \
+            --toc \
+            --toc-depth=3 \
+            --highlight-style=tango \
+            --variable colorlinks=true \
+            --variable linkcolor=blue \
+            --variable urlcolor=blue \
+            --variable toccolor=gray \
+            -V geometry:margin=1in \
+            -V fontsize=11pt \
+            -V mainfont="DejaVu Sans" \
+            -V monofont="DejaVu Sans Mono"
+      
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+      
+      - name: Commit PDF if changed
+        run: |
+          git add TECHNICAL_DOCUMENTATION.pdf
+          # Check if there are changes to commit
+          if git diff --staged --quiet; then
+            echo "No changes to PDF file, skipping commit"
+          else
+            git commit -m "Auto-generate PDF documentation [skip ci]"
+            git push
+          fi
