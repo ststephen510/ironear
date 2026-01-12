@@ -24,6 +24,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
+          # Note: Consider using apt caching for faster workflow runs
           sudo apt-get install -y pandoc texlive-xetex texlive-fonts-recommended texlive-plain-generic
       
       - name: Generate PDF from Markdown
@@ -39,9 +40,7 @@ jobs:
             --variable urlcolor=blue \
             --variable toccolor=gray \
             -V geometry:margin=1in \
-            -V fontsize=11pt \
-            -V mainfont="DejaVu Sans" \
-            -V monofont="DejaVu Sans Mono"
+            -V fontsize=11pt
       
       - name: Configure Git
         run: |
@@ -56,5 +55,8 @@ jobs:
             echo "No changes to PDF file, skipping commit"
           else
             git commit -m "Auto-generate PDF documentation [skip ci]"
-            git push
+            git push || {
+              echo "Failed to push changes"
+              exit 1
+            }
           fi
