@@ -489,6 +489,133 @@
                 opacity: 0;
             }
         }
+
+        /* Video Section */
+        .videos {
+            background: var(--bg-primary);
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .video-container {
+            position: relative;
+            background: var(--bg-card);
+            border: 2px solid var(--border-color);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            aspect-ratio: 16 / 9;
+        }
+
+        .video-container:hover {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .video-container:hover video {
+            opacity: 0.9;
+        }
+
+        /* Technical Specs Section */
+        .specs {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .spec-card {
+            padding: 2.5rem;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .spec-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-secondary), var(--accent-highlight));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .spec-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .spec-card:hover {
+            border-color: var(--accent-secondary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.2);
+        }
+
+        .spec-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+
+        .spec-label {
+            font-size: 1rem;
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .spec-description {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Responsive adjustments for video grid */
+        @media (max-width: 1024px) {
+            .video-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .video-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .spec-card {
+                padding: 2rem;
+            }
+
+            .spec-value {
+                font-size: 2rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -502,7 +629,8 @@
             <ul class="nav-links">
                 <li><a href="#overview">Overview</a></li>
                 <li><a href="#capabilities">Capabilities</a></li>
-                <li><a href="#technology">Technology</a></li>
+                <li><a href="#videos">System In Action</a></li>
+                <li><a href="#specs">Specs</a></li>
                 <li><a href="https://github.com/ststephen510/ironear" target="_blank">GitHub</a></li>
             </ul>
         </nav>
@@ -635,6 +763,114 @@
                         Custom signature training system allows deployment-specific target 
                         recognition. Machine learning models continuously improve detection 
                         accuracy through operational feedback.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- System In Action - Videos Section -->
+    <section id="videos" class="videos">
+        <div class="container">
+            <h2 class="section-title">System In Action</h2>
+            <p class="section-subtitle">
+                Live demonstrations of autonomous detection and real-time classification
+            </p>
+            <div class="video-grid">
+                <div class="video-container">
+                    <video autoplay muted loop playsinline controls aria-label="IronEar system demonstration video 1">
+                        <source src="_users_fcb64d5c-5b3a-49f5-b475-713b7276c366_generated_1a4ae9f9-212d-43d2-8163-2d206e327702_generated_video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-container">
+                    <video autoplay muted loop playsinline controls aria-label="IronEar system demonstration video 2">
+                        <source src="_users_fcb64d5c-5b3a-49f5-b475-713b7276c366_generated_b1f0633b-4421-427c-b3e4-66b96f611f23_generated_video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-container">
+                    <video autoplay muted loop playsinline controls aria-label="IronEar system demonstration video 3">
+                        <source src="_users_fcb64d5c-5b3a-49f5-b475-713b7276c366_generated_bb316db0-a284-4327-a124-7546a3cc6607_generated_video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-container">
+                    <video autoplay muted loop playsinline controls aria-label="IronEar system demonstration video 4">
+                        <source src="_users_fcb64d5c-5b3a-49f5-b475-713b7276c366_generated_d5286246-a38f-4885-ac5c-ad1cdc1dbbeb_generated_video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-container">
+                    <video autoplay muted loop playsinline controls aria-label="IronEar system demonstration video 5">
+                        <source src="_users_fcb64d5c-5b3a-49f5-b475-713b7276c366_generated_de827ea8-f3f7-4e65-b4e4-348d72c3c425_generated_video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-container">
+                    <video autoplay muted loop playsinline controls aria-label="IronEar system demonstration video 6">
+                        <source src="_users_fcb64d5c-5b3a-49f5-b475-713b7276c366_generated_e090ef46-55cc-44a2-82dc-9ccba238e6b1_generated_video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-container">
+                    <video autoplay muted loop playsinline controls aria-label="IronEar system demonstration video 7">
+                        <source src="_users_fcb64d5c-5b3a-49f5-b475-713b7276c366_generated_f9a22f51-e8a0-4373-8295-c6cc8198426c_generated_video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Specs Section -->
+    <section id="specs" class="specs">
+        <div class="container">
+            <h2 class="section-title">Technical Specifications</h2>
+            <p class="section-subtitle">
+                High-level system performance metrics and capabilities
+            </p>
+            <div class="specs-grid">
+                <div class="spec-card">
+                    <div class="spec-value">&gt;95%</div>
+                    <div class="spec-label">Detection Accuracy</div>
+                    <p class="spec-description">
+                        High-confidence classification and noise filtering for precision target identification
+                    </p>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-value">&lt;100ms</div>
+                    <div class="spec-label">Response Time</div>
+                    <p class="spec-description">
+                        Real-time event processing from detection to classification and alert generation
+                    </p>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-value">360°</div>
+                    <div class="spec-label">Coverage Range</div>
+                    <p class="spec-description">
+                        Omnidirectional acoustic sensing with precision bearing calculation
+                    </p>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-value">100+</div>
+                    <div class="spec-label">Scalable Nodes</div>
+                    <p class="spec-description">
+                        Distributed architecture supporting large-scale coordinated sensor deployments
+                    </p>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-value">24/7</div>
+                    <div class="spec-label">Autonomous Operation</div>
+                    <p class="spec-description">
+                        Continuous monitoring with self-contained power and processing capabilities
+                    </p>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-value">GPS</div>
+                    <div class="spec-label">Geo-Referenced</div>
+                    <p class="spec-description">
+                        Integrated location services for precise event mapping and spatial tracking
                     </p>
                 </div>
             </div>
