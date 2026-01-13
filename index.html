@@ -489,6 +489,98 @@
                 opacity: 0;
             }
         }
+
+        /* Video Showcase Section */
+        .video-showcase {
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .video-container {
+            position: relative;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            aspect-ratio: 16 / 9;
+        }
+
+        .video-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 2px solid transparent;
+            border-radius: 4px;
+            transition: border-color 0.3s ease;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .video-container:hover::before {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+        }
+
+        .video-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            background: var(--bg-primary);
+        }
+
+        /* Video loading placeholder */
+        .video-container::after {
+            content: '▶';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            color: var(--accent-primary);
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .video-container video:not([poster]) {
+            background: var(--bg-primary);
+        }
+
+        /* Responsive adjustments for video grid */
+        @media (max-width: 1024px) {
+            .video-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .video-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .video-container {
+                aspect-ratio: 16 / 9;
+            }
+        }
     </style>
 </head>
 <body>
@@ -500,6 +592,7 @@
         <nav>
             <a href="#" class="logo">IRONEAR</a>
             <ul class="nav-links">
+                <li><a href="#videos">Videos</a></li>
                 <li><a href="#overview">Overview</a></li>
                 <li><a href="#capabilities">Capabilities</a></li>
                 <li><a href="#technology">Technology</a></li>
@@ -521,6 +614,60 @@
             <a href="#overview" class="cta-button fade-in" style="animation-delay: 0.6s;">Explore System</a>
         </div>
         <div class="scroll-indicator"></div>
+    </section>
+
+    <!-- Video Showcase Section -->
+    <section id="videos" class="video-showcase">
+        <div class="container">
+            <h2 class="section-title">SYSTEM IN ACTION</h2>
+            <p class="section-subtitle">
+                Watch IronEar multi-sensor swarm technology in real-world deployment scenarios
+            </p>
+            <div class="video-grid">
+                <div class="video-container">
+                    <video controls loop muted preload="metadata">
+                        <source src="_users_fcb64d5c-5b3a-49f5-b475-713b7276c366_generated_1a4ae9f9-212d-43d2-8163-2d206e327702_generated_video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-container">
+                    <video controls loop muted preload="metadata">
+                        <source src="_users_fcb64d5c-5b3a-49f5-b475-713b7276c366_generated_b1f0633b-4421-427c-b3e4-66b96f611f23_generated_video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-container">
+                    <video controls loop muted preload="metadata">
+                        <source src="_users_fcb64d5c-5b3a-49f5-b475-713b7276c366_generated_bb316db0-a284-4327-a124-7546a3cc6607_generated_video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-container">
+                    <video controls loop muted preload="metadata">
+                        <source src="_users_fcb64d5c-5b3a-49f5-b475-713b7276c366_generated_d5286246-a38f-4885-ac5c-ad1cdc1dbbeb_generated_video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-container">
+                    <video controls loop muted preload="metadata">
+                        <source src="_users_fcb64d5c-5b3a-49f5-b475-713b7276c366_generated_de827ea8-f3f7-4e65-b4e4-348d72c3c425_generated_video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-container">
+                    <video controls loop muted preload="metadata">
+                        <source src="_users_fcb64d5c-5b3a-49f5-b475-713b7276c366_generated_e090ef46-55cc-44a2-82dc-9ccba238e6b1_generated_video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-container">
+                    <video controls loop muted preload="metadata">
+                        <source src="_users_fcb64d5c-5b3a-49f5-b475-713b7276c366_generated_f9a22f51-e8a0-4373-8295-c6cc8198426c_generated_video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Overview Section -->
