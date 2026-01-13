@@ -25,11 +25,11 @@
             --text-primary: #ffffff;
             --text-secondary: #e0e0e0;
             --text-muted: #888888;
-            --accent-primary: #00ff88;
-            --accent-secondary: #00d9ff;
-            --accent-highlight: #ff0055;
+            --accent-primary: #ffffff;
+            --accent-secondary: #cccccc;
+            --accent-highlight: #ffffff;
             --border-color: #333333;
-            --grid-color: rgba(0, 255, 136, 0.1);
+            --grid-color: rgba(255, 255, 255, 0.05);
         }
 
         html {
@@ -201,7 +201,7 @@
         .cta-button:hover {
             background: var(--accent-primary);
             color: var(--bg-primary);
-            box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
         }
 
         /* Section Styles */
@@ -294,7 +294,7 @@
             left: 0;
             width: 100%;
             height: 3px;
-            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            background: var(--accent-primary);
             transform: scaleX(0);
             transform-origin: left;
             transition: transform 0.3s ease;
@@ -306,13 +306,7 @@
 
         .capability-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(0, 255, 136, 0.2);
-        }
-
-        .capability-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            display: block;
+            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.1);
         }
 
         .capability-card h3 {
@@ -351,13 +345,7 @@
 
         .tech-item:hover {
             border-color: var(--accent-primary);
-            box-shadow: 0 0 20px rgba(0, 255, 136, 0.15);
-        }
-
-        .tech-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: var(--accent-secondary);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
         }
 
         .tech-item h4 {
@@ -513,7 +501,7 @@
 
         .video-container:hover {
             border-color: var(--accent-primary);
-            box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.15);
             transform: translateY(-5px);
         }
 
@@ -558,7 +546,7 @@
             left: 0;
             width: 100%;
             height: 3px;
-            background: linear-gradient(90deg, var(--accent-secondary), var(--accent-highlight));
+            background: var(--accent-secondary);
             transform: scaleX(0);
             transition: transform 0.3s ease;
         }
@@ -570,7 +558,7 @@
         .spec-card:hover {
             border-color: var(--accent-secondary);
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
         }
 
         .spec-value {
@@ -712,7 +700,6 @@
             </p>
             <div class="capabilities-grid">
                 <div class="capability-card">
-                    <span class="capability-icon">⚡</span>
                     <h3>Distributed Detection</h3>
                     <p>
                         Network of autonomous sensor nodes operating in coordinated fashion. 
@@ -721,7 +708,6 @@
                     </p>
                 </div>
                 <div class="capability-card">
-                    <span class="capability-icon">🎯</span>
                     <h3>Event Classification</h3>
                     <p>
                         AI-powered sound identification and classification system with adaptive 
@@ -730,7 +716,6 @@
                     </p>
                 </div>
                 <div class="capability-card">
-                    <span class="capability-icon">📡</span>
                     <h3>Spatial Awareness</h3>
                     <p>
                         Precision bearing calculation and directional tracking through advanced 
@@ -739,7 +724,6 @@
                     </p>
                 </div>
                 <div class="capability-card">
-                    <span class="capability-icon">🗺️</span>
                     <h3>Real-Time Mapping</h3>
                     <p>
                         Live visualization of detected events with geographic correlation. 
@@ -748,7 +732,6 @@
                     </p>
                 </div>
                 <div class="capability-card">
-                    <span class="capability-icon">🔗</span>
                     <h3>Swarm Intelligence</h3>
                     <p>
                         Coordinated multi-node operations enable enhanced detection through 
@@ -757,7 +740,6 @@
                     </p>
                 </div>
                 <div class="capability-card">
-                    <span class="capability-icon">🧠</span>
                     <h3>Adaptive Learning</h3>
                     <p>
                         Custom signature training system allows deployment-specific target 
@@ -886,22 +868,18 @@
             </p>
             <div class="tech-stack">
                 <div class="tech-item">
-                    <div class="tech-icon">🔊</div>
                     <h4>Acoustic Processing</h4>
                     <p>High-fidelity audio capture and signal processing pipeline</p>
                 </div>
                 <div class="tech-item">
-                    <div class="tech-icon">🤖</div>
                     <h4>Machine Learning</h4>
                     <p>Neural network classification and pattern recognition</p>
                 </div>
                 <div class="tech-item">
-                    <div class="tech-icon">📊</div>
                     <h4>Sensor Fusion</h4>
                     <p>Multi-node data correlation and distributed processing</p>
                 </div>
                 <div class="tech-item">
-                    <div class="tech-icon">📈</div>
                     <h4>Real-Time Visualization</h4>
                     <p>Live mapping and detection analytics dashboard</p>
                 </div>
