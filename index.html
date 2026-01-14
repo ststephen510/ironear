@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="IronEar - Multi-Sensor Swarm Technology for Autonomous Detection and Mapping">
-    <title>IronEar | Multi-Sensor Swarm Intelligence Platform</title>
+    <meta name="description" content="IronEar - Acoustic and RF intelligence, meshing, and swarm technology">
+    <title>IronEar</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -76,61 +76,14 @@
             padding: 0 2rem;
         }
 
-        /* Header/Navigation */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-color);
-            padding: 1rem 0;
-            z-index: 100;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent-primary);
-            text-decoration: none;
-            letter-spacing: 2px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-primary);
-        }
-
         /* Hero Section */
         .hero {
-            min-height: 100vh;
+            min-height: 70vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding-top: 80px;
+            padding: 4rem 2rem 2rem;
             position: relative;
         }
 
@@ -148,253 +101,20 @@
         }
 
         .hero-subtitle {
-            font-size: clamp(1rem, 2.5vw, 1.5rem);
-            color: var(--accent-primary);
-            margin-bottom: 2rem;
+            font-size: clamp(0.9rem, 2vw, 1.2rem);
+            color: var(--text-secondary);
+            margin-bottom: 0;
             font-weight: 400;
             letter-spacing: 0.02em;
-        }
-
-        .hero-description {
-            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
-            color: var(--text-muted);
-            max-width: 800px;
-            margin: 0 auto 3rem;
-            line-height: 1.8;
-        }
-
-        /* Typewriter Effect */
-        .typewriter {
-            overflow: hidden;
-            border-right: 3px solid var(--accent-primary);
-            white-space: nowrap;
-            margin: 0 auto;
-            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
-            display: inline-block;
-        }
-
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: var(--accent-primary) }
-        }
-
-        /* CTA Button */
-        .cta-button {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: transparent;
-            color: var(--accent-primary);
-            text-decoration: none;
-            border: 2px solid var(--accent-primary);
-            font-size: 1rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-        }
-
-        .cta-button:hover {
-            background: var(--accent-primary);
-            color: var(--bg-primary);
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-        }
-
-        /* Section Styles */
-        section {
-            padding: 6rem 0;
-            position: relative;
-        }
-
-        .section-title {
-            font-size: clamp(2rem, 4vw, 3rem);
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-            text-align: center;
-            font-weight: 700;
-            letter-spacing: 2px;
-        }
-
-        .section-subtitle {
-            font-size: 1.1rem;
-            color: var(--accent-secondary);
-            text-align: center;
-            margin-bottom: 4rem;
-            max-width: 700px;
+            max-width: 900px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        /* Overview Section */
-        .overview {
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .overview-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .overview-item {
-            padding: 2rem;
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-left: 3px solid var(--accent-primary);
-            transition: all 0.3s ease;
-        }
-
-        .overview-item:hover {
-            transform: translateY(-5px);
-            border-left-color: var(--accent-secondary);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .overview-item h3 {
-            color: var(--accent-primary);
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-
-        .overview-item p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        /* Capabilities Section */
-        .capabilities-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3rem;
-        }
-
-        .capability-card {
-            padding: 2.5rem;
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
+        /* Section Styles */
+        section {
+            padding: 4rem 0;
             position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .capability-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: var(--accent-primary);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s ease;
-        }
-
-        .capability-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .capability-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.1);
-        }
-
-        .capability-card h3 {
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-            font-weight: 600;
-        }
-
-        .capability-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.8;
-        }
-
-        /* Technology Section */
-        .technology {
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--border-color);
-        }
-
-        .tech-stack {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .tech-item {
-            padding: 2rem;
-            background: var(--bg-primary);
-            border: 1px solid var(--border-color);
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .tech-item:hover {
-            border-color: var(--accent-primary);
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-        }
-
-        .tech-item h4 {
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-
-        .tech-item p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--bg-primary);
-            border-top: 1px solid var(--border-color);
-            padding: 3rem 0;
-            text-align: center;
-        }
-
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .footer-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.3s ease;
-            font-size: 0.9rem;
-        }
-
-        .footer-links a:hover {
-            color: var(--accent-primary);
-        }
-
-        .footer-text {
-            color: var(--text-muted);
-            font-size: 0.85rem;
         }
 
         /* Fade-in Animation */
@@ -408,73 +128,6 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
-            }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .nav-links {
-                gap: 1rem;
-            }
-
-            .hero {
-                padding: 120px 0 60px;
-            }
-
-            section {
-                padding: 4rem 0;
-            }
-
-            .overview-grid,
-            .capabilities-grid,
-            .tech-stack {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .footer-links {
-                flex-direction: column;
-                gap: 1rem;
-            }
-        }
-
-        /* Scroll indicator */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 30px;
-            height: 50px;
-            border: 2px solid var(--accent-primary);
-            border-radius: 20px;
-            display: flex;
-            justify-content: center;
-            padding-top: 8px;
-        }
-
-        .scroll-indicator::before {
-            content: '';
-            width: 4px;
-            height: 8px;
-            background: var(--accent-primary);
-            border-radius: 2px;
-            animation: scroll 2s infinite;
-        }
-
-        @keyframes scroll {
-            0% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(20px);
-                opacity: 0;
             }
         }
 
@@ -516,70 +169,13 @@
             opacity: 0.9;
         }
 
-        /* Technical Specs Section */
-        .specs {
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
+        .video-container video::-webkit-media-controls {
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        .specs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .spec-card {
-            padding: 2.5rem;
-            background: var(--bg-primary);
-            border: 1px solid var(--border-color);
-            text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .spec-card::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: var(--accent-secondary);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .spec-card:hover::after {
-            transform: scaleX(1);
-        }
-
-        .spec-card:hover {
-            border-color: var(--accent-secondary);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
-        }
-
-        .spec-value {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--accent-primary);
-            margin-bottom: 0.5rem;
-            line-height: 1;
-        }
-
-        .spec-label {
-            font-size: 1rem;
-            color: var(--text-primary);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .spec-description {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            line-height: 1.6;
+        .video-container:hover video::-webkit-media-controls {
+            opacity: 1;
         }
 
         /* Responsive adjustments for video grid */
@@ -596,12 +192,12 @@
                 gap: 1.5rem;
             }
 
-            .spec-card {
-                padding: 2rem;
+            .hero {
+                padding: 3rem 2rem 2rem;
             }
 
-            .spec-value {
-                font-size: 2rem;
+            section {
+                padding: 3rem 0;
             }
         }
     </style>
@@ -610,335 +206,72 @@
     <!-- Animated Grid Background -->
     <div class="grid-background"></div>
 
-    <!-- Header -->
-    <header>
-        <nav>
-            <a href="#" class="logo">IRONEAR</a>
-            <ul class="nav-links">
-                <li><a href="#overview">Overview</a></li>
-                <li><a href="#capabilities">Capabilities</a></li>
-                <li><a href="#videos">System In Action</a></li>
-                <li><a href="#specs">Specs</a></li>
-                <li><a href="https://github.com/ststephen510/ironear" target="_blank">GitHub</a></li>
-            </ul>
-        </nav>
-    </header>
-
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1 class="fade-in">IRONEAR</h1>
-            <p class="hero-subtitle fade-in" style="animation-delay: 0.2s;">Multi-Sensor Swarm Technology for Autonomous Detection and Mapping</p>
-            <p class="hero-description fade-in" style="animation-delay: 0.4s;">
-                Advanced distributed intelligence platform combining autonomous sensor nodes, 
-                real-time event classification, and coordinated swarm operations for precision 
-                detection and spatial awareness.
-            </p>
-            <a href="#overview" class="cta-button fade-in" style="animation-delay: 0.6s;">Explore System</a>
-        </div>
-        <div class="scroll-indicator"></div>
-    </section>
-
-    <!-- Overview Section -->
-    <section id="overview" class="overview">
-        <div class="container">
-            <h2 class="section-title">System Overview</h2>
-            <p class="section-subtitle">
-                Next-generation multi-sensor platform for distributed acoustic intelligence
-            </p>
-            <div class="overview-grid">
-                <div class="overview-item">
-                    <h3>[ Distributed Intelligence ]</h3>
-                    <p>
-                        Multi-sensor network architecture enabling coordinated detection across 
-                        autonomous nodes. Each sensor operates independently while contributing 
-                        to collective awareness and precision mapping.
-                    </p>
-                </div>
-                <div class="overview-item">
-                    <h3>[ Swarm Operations ]</h3>
-                    <p>
-                        Swarm-capable acoustic detection nodes communicate and coordinate in 
-                        real-time, providing enhanced coverage and redundancy through 
-                        distributed sensor fusion.
-                    </p>
-                </div>
-                <div class="overview-item">
-                    <h3>[ Real-Time Classification ]</h3>
-                    <p>
-                        Advanced machine learning algorithms enable instant object and event 
-                        classification with high confidence, filtering noise and identifying 
-                        targets of interest.
-                    </p>
-                </div>
-                <div class="overview-item">
-                    <h3>[ Autonomous Mapping ]</h3>
-                    <p>
-                        Self-contained location determination and spatial tracking capabilities 
-                        provide precise bearing calculations and geographic event mapping 
-                        without external dependencies.
-                    </p>
-                </div>
-                <div class="overview-item">
-                    <h3>[ Scalable Architecture ]</h3>
-                    <p>
-                        Modular design supports deployment from single-node operations to 
-                        large-scale coordinated sensor networks, adapting to mission 
-                        requirements and operational environments.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Capabilities Section -->
-    <section id="capabilities" class="capabilities">
-        <div class="container">
-            <h2 class="section-title">Core Capabilities</h2>
-            <p class="section-subtitle">
-                Mission-critical features for autonomous detection and spatial awareness
-            </p>
-            <div class="capabilities-grid">
-                <div class="capability-card">
-                    <h3>Distributed Detection</h3>
-                    <p>
-                        Network of autonomous sensor nodes operating in coordinated fashion. 
-                        Each node independently processes acoustic data while contributing to 
-                        collective detection coverage and situational awareness.
-                    </p>
-                </div>
-                <div class="capability-card">
-                    <h3>Event Classification</h3>
-                    <p>
-                        AI-powered sound identification and classification system with adaptive 
-                        learning capabilities. Custom signature training enables detection of 
-                        specific targets while filtering environmental noise.
-                    </p>
-                </div>
-                <div class="capability-card">
-                    <h3>Spatial Awareness</h3>
-                    <p>
-                        Precision bearing calculation and directional tracking through advanced 
-                        acoustic processing. Multi-sensor fusion provides accurate location 
-                        determination for detected events.
-                    </p>
-                </div>
-                <div class="capability-card">
-                    <h3>Real-Time Mapping</h3>
-                    <p>
-                        Live visualization of detected events with geographic correlation. 
-                        GPS-referenced mapping provides operational picture and historical 
-                        tracking of sensor detections.
-                    </p>
-                </div>
-                <div class="capability-card">
-                    <h3>Swarm Intelligence</h3>
-                    <p>
-                        Coordinated multi-node operations enable enhanced detection through 
-                        collaborative processing. Swarm behavior adapts to environmental 
-                        conditions and mission parameters.
-                    </p>
-                </div>
-                <div class="capability-card">
-                    <h3>Adaptive Learning</h3>
-                    <p>
-                        Custom signature training system allows deployment-specific target 
-                        recognition. Machine learning models continuously improve detection 
-                        accuracy through operational feedback.
-                    </p>
-                </div>
-            </div>
+            <h1 class="fade-in">IronEar</h1>
+            <p class="hero-subtitle fade-in" style="animation-delay: 0.2s;">Acoustic and RF intelligence - Acoustic and RF meshing - Swarm technology</p>
         </div>
     </section>
 
     <!-- System In Action - Videos Section -->
     <section id="videos" class="videos">
         <div class="container">
-            <h2 class="section-title">System In Action</h2>
-            <p class="section-subtitle">
-                Live demonstrations of autonomous detection and real-time classification
-            </p>
             <div class="video-grid">
                 <div class="video-container">
-                    <video autoplay muted loop playsinline controls aria-label="IronEar system demonstration video 1">
-                        <source src="_users_fcb64d5c-5b3a-49f5-b475-713b7276c366_generated_1a4ae9f9-212d-43d2-8163-2d206e327702_generated_video.mp4" type="video/mp4">
+                    <video autoplay muted loop playsinline aria-label="IronEar system demonstration video 1">
+                        <source src="./_users_fcb64d5c-5b3a-49f5-b475-713b7276c366_generated_1a4ae9f9-212d-43d2-8163-2d206e327702_generated_video.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                 </div>
                 <div class="video-container">
-                    <video autoplay muted loop playsinline controls aria-label="IronEar system demonstration video 2">
-                        <source src="_users_fcb64d5c-5b3a-49f5-b475-713b7276c366_generated_b1f0633b-4421-427c-b3e4-66b96f611f23_generated_video.mp4" type="video/mp4">
+                    <video autoplay muted loop playsinline aria-label="IronEar system demonstration video 2">
+                        <source src="./_users_fcb64d5c-5b3a-49f5-b475-713b7276c366_generated_b1f0633b-4421-427c-b3e4-66b96f611f23_generated_video.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                 </div>
                 <div class="video-container">
-                    <video autoplay muted loop playsinline controls aria-label="IronEar system demonstration video 3">
-                        <source src="_users_fcb64d5c-5b3a-49f5-b475-713b7276c366_generated_bb316db0-a284-4327-a124-7546a3cc6607_generated_video.mp4" type="video/mp4">
+                    <video autoplay muted loop playsinline aria-label="IronEar system demonstration video 3">
+                        <source src="./_users_fcb64d5c-5b3a-49f5-b475-713b7276c366_generated_bb316db0-a284-4327-a124-7546a3cc6607_generated_video.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                 </div>
                 <div class="video-container">
-                    <video autoplay muted loop playsinline controls aria-label="IronEar system demonstration video 4">
-                        <source src="_users_fcb64d5c-5b3a-49f5-b475-713b7276c366_generated_d5286246-a38f-4885-ac5c-ad1cdc1dbbeb_generated_video.mp4" type="video/mp4">
+                    <video autoplay muted loop playsinline aria-label="IronEar system demonstration video 4">
+                        <source src="./_users_fcb64d5c-5b3a-49f5-b475-713b7276c366_generated_d5286246-a38f-4885-ac5c-ad1cdc1dbbeb_generated_video.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                 </div>
                 <div class="video-container">
-                    <video autoplay muted loop playsinline controls aria-label="IronEar system demonstration video 5">
-                        <source src="_users_fcb64d5c-5b3a-49f5-b475-713b7276c366_generated_de827ea8-f3f7-4e65-b4e4-348d72c3c425_generated_video.mp4" type="video/mp4">
+                    <video autoplay muted loop playsinline aria-label="IronEar system demonstration video 5">
+                        <source src="./_users_fcb64d5c-5b3a-49f5-b475-713b7276c366_generated_de827ea8-f3f7-4e65-b4e4-348d72c3c425_generated_video.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                 </div>
                 <div class="video-container">
-                    <video autoplay muted loop playsinline controls aria-label="IronEar system demonstration video 6">
-                        <source src="_users_fcb64d5c-5b3a-49f5-b475-713b7276c366_generated_e090ef46-55cc-44a2-82dc-9ccba238e6b1_generated_video.mp4" type="video/mp4">
+                    <video autoplay muted loop playsinline aria-label="IronEar system demonstration video 6">
+                        <source src="./_users_fcb64d5c-5b3a-49f5-b475-713b7276c366_generated_e090ef46-55cc-44a2-82dc-9ccba238e6b1_generated_video.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                 </div>
                 <div class="video-container">
-                    <video autoplay muted loop playsinline controls aria-label="IronEar system demonstration video 7">
-                        <source src="_users_fcb64d5c-5b3a-49f5-b475-713b7276c366_generated_f9a22f51-e8a0-4373-8295-c6cc8198426c_generated_video.mp4" type="video/mp4">
+                    <video autoplay muted loop playsinline aria-label="IronEar system demonstration video 7">
+                        <source src="./_users_fcb64d5c-5b3a-49f5-b475-713b7276c366_generated_f9a22f51-e8a0-4373-8295-c6cc8198426c_generated_video.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Technical Specs Section -->
-    <section id="specs" class="specs">
-        <div class="container">
-            <h2 class="section-title">Technical Specifications</h2>
-            <p class="section-subtitle">
-                High-level system performance metrics and capabilities
-            </p>
-            <div class="specs-grid">
-                <div class="spec-card">
-                    <div class="spec-value">&gt;95%</div>
-                    <div class="spec-label">Detection Accuracy</div>
-                    <p class="spec-description">
-                        High-confidence classification and noise filtering for precision target identification
-                    </p>
-                </div>
-                <div class="spec-card">
-                    <div class="spec-value">&lt;100ms</div>
-                    <div class="spec-label">Response Time</div>
-                    <p class="spec-description">
-                        Real-time event processing from detection to classification and alert generation
-                    </p>
-                </div>
-                <div class="spec-card">
-                    <div class="spec-value">360°</div>
-                    <div class="spec-label">Coverage Range</div>
-                    <p class="spec-description">
-                        Omnidirectional acoustic sensing with precision bearing calculation
-                    </p>
-                </div>
-                <div class="spec-card">
-                    <div class="spec-value">100+</div>
-                    <div class="spec-label">Scalable Nodes</div>
-                    <p class="spec-description">
-                        Distributed architecture supporting large-scale coordinated sensor deployments
-                    </p>
-                </div>
-                <div class="spec-card">
-                    <div class="spec-value">24/7</div>
-                    <div class="spec-label">Autonomous Operation</div>
-                    <p class="spec-description">
-                        Continuous monitoring with self-contained power and processing capabilities
-                    </p>
-                </div>
-                <div class="spec-card">
-                    <div class="spec-value">GPS</div>
-                    <div class="spec-label">Geo-Referenced</div>
-                    <p class="spec-description">
-                        Integrated location services for precise event mapping and spatial tracking
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Technology Section -->
-    <section id="technology" class="technology">
-        <div class="container">
-            <h2 class="section-title">Technology Stack</h2>
-            <p class="section-subtitle">
-                Advanced systems engineering for autonomous sensor operations
-            </p>
-            <div class="tech-stack">
-                <div class="tech-item">
-                    <h4>Acoustic Processing</h4>
-                    <p>High-fidelity audio capture and signal processing pipeline</p>
-                </div>
-                <div class="tech-item">
-                    <h4>Machine Learning</h4>
-                    <p>Neural network classification and pattern recognition</p>
-                </div>
-                <div class="tech-item">
-                    <h4>Sensor Fusion</h4>
-                    <p>Multi-node data correlation and distributed processing</p>
-                </div>
-                <div class="tech-item">
-                    <h4>Real-Time Visualization</h4>
-                    <p>Live mapping and detection analytics dashboard</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <a href="#" class="logo">IRONEAR</a>
-                <ul class="footer-links">
-                    <li><a href="https://github.com/ststephen510/ironear" target="_blank">GitHub Repository</a></li>
-                    <li><a href="https://github.com/ststephen510/ironear/blob/main/TECHNICAL_DOCUMENTATION.md" target="_blank">Documentation</a></li>
-                </ul>
-                <p class="footer-text">
-                    © 2025 IronEar Project | Multi-Sensor Swarm Intelligence Platform
-                </p>
-            </div>
-        </div>
-    </footer>
 
     <script>
-        // Intersection Observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe all sections
-        document.querySelectorAll('section:not(.hero)').forEach(section => {
-            section.style.opacity = '0';
-            section.style.transform = 'translateY(30px)';
-            section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-            observer.observe(section);
-        });
-
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
+        // Fade-in animations for hero elements
+        const fadeElements = document.querySelectorAll('.fade-in');
+        fadeElements.forEach((el, index) => {
+            setTimeout(() => {
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            }, index * 200);
         });
     </script>
 </body>
