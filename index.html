@@ -18,261 +18,167 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --bg-primary: #0a0a0a;
-            --bg-secondary: #111111;
-            --bg-card: #1a1a1a;
-            --text-primary: #ffffff;
-            --text-secondary: #e0e0e0;
-            --text-muted: #888888;
-            --accent-primary: #ffffff;
-            --accent-secondary: #cccccc;
-            --accent-highlight: #ffffff;
-            --border-color: #333333;
-            --grid-color: rgba(255, 255, 255, 0.05);
-        }
-
-        html {
-            scroll-behavior: smooth;
+        html, body {
+            height: 100%;
+            overflow: hidden;
         }
 
         body {
             font-family: 'JetBrains Mono', 'Space Mono', 'Courier New', monospace;
-            background-color: var(--bg-primary);
-            color: var(--text-secondary);
+            background-color: #000000;
+            color: #ffffff;
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
-        /* Animated Grid Background */
-        .grid-background {
+        /* Background Video Container */
+        .video-background {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -1;
-            background-image: 
-                linear-gradient(var(--grid-color) 1px, transparent 1px),
-                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-            background-size: 50px 50px;
-            opacity: 0.3;
-            animation: gridMove 20s linear infinite;
+            overflow: hidden;
+            background-color: #000000;
         }
 
-        @keyframes gridMove {
-            0% {
-                transform: translate(0, 0);
-            }
-            100% {
-                transform: translate(50px, 50px);
-            }
+        .video-background video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
         }
 
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
+        .video-background video.active {
+            opacity: 0.35;
         }
 
-        /* Hero Section */
-        .hero {
-            min-height: 70vh;
+        /* Content Container */
+        .content {
+            position: relative;
+            z-index: 1;
+            height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 4rem 2rem 2rem;
-            position: relative;
+            padding: 2rem;
         }
 
-        .hero-content {
-            z-index: 1;
-        }
-
-        .hero h1 {
-            font-size: clamp(3rem, 8vw, 7rem);
+        h1 {
+            font-size: clamp(3rem, 10vw, 8rem);
             font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-            letter-spacing: 0.05em;
+            color: #ffffff;
+            margin-bottom: 2rem;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
         }
 
-        .hero-subtitle {
-            font-size: clamp(0.9rem, 2vw, 1.2rem);
-            color: var(--text-secondary);
-            margin-bottom: 0;
+        .tagline {
+            font-size: clamp(0.9rem, 2vw, 1.3rem);
+            color: #cccccc;
             font-weight: 400;
-            letter-spacing: 0.02em;
+            letter-spacing: 0.05em;
+            line-height: 1.8;
             max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Section Styles */
-        section {
-            padding: 4rem 0;
-            position: relative;
-        }
-
-        /* Fade-in Animation */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Video Section */
-        .videos {
-            background: var(--bg-primary);
-        }
-
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .video-container {
-            position: relative;
-            background: var(--bg-card);
-            border: 2px solid var(--border-color);
-            overflow: hidden;
-            transition: all 0.3s ease;
-            aspect-ratio: 16 / 9;
-        }
-
-        .video-container:hover {
-            border-color: var(--accent-primary);
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.15);
-            transform: translateY(-5px);
-        }
-
-        .video-container video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .video-container:hover video {
-            opacity: 0.9;
-        }
-
-        .video-container video::-webkit-media-controls {
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .video-container:hover video::-webkit-media-controls {
-            opacity: 1;
-        }
-
-        /* Responsive adjustments for video grid */
-        @media (max-width: 1024px) {
-            .video-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-            }
         }
 
         @media (max-width: 768px) {
-            .video-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
+            h1 {
+                margin-bottom: 1.5rem;
             }
-
-            .hero {
-                padding: 3rem 2rem 2rem;
-            }
-
-            section {
-                padding: 3rem 0;
+            
+            .tagline {
+                line-height: 1.6;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Animated Grid Background -->
-    <div class="grid-background"></div>
+    <!-- Background Video Container -->
+    <div class="video-background">
+        <video id="video1" autoplay muted loop playsinline preload="metadata">
+            <source src="./video1.mp4" type="video/mp4">
+        </video>
+        <video id="video2" muted loop playsinline preload="metadata">
+            <source src="./video2.mp4" type="video/mp4">
+        </video>
+        <video id="video3" muted loop playsinline preload="metadata">
+            <source src="./video3.mp4" type="video/mp4">
+        </video>
+        <video id="video4" muted loop playsinline preload="metadata">
+            <source src="./video4.mp4" type="video/mp4">
+        </video>
+        <video id="video5" muted loop playsinline preload="metadata">
+            <source src="./video5.mp4" type="video/mp4">
+        </video>
+        <video id="video6" muted loop playsinline preload="metadata">
+            <source src="./video6.mp4" type="video/mp4">
+        </video>
+        <video id="video7" muted loop playsinline preload="metadata">
+            <source src="./video7.mp4" type="video/mp4">
+        </video>
+    </div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="fade-in">IronEar</h1>
-            <p class="hero-subtitle fade-in" style="animation-delay: 0.2s;">Acoustic and RF intelligence - Acoustic and RF meshing - Swarm technology</p>
-        </div>
-    </section>
-
-    <!-- System In Action - Videos Section -->
-    <section id="videos" class="videos">
-        <div class="container">
-            <div class="video-grid">
-                <div class="video-container">
-                    <video autoplay muted loop playsinline controls aria-label="IronEar system demonstration video 1">
-                        <source src="./_users_fcb64d5c-5b3a-49f5-b475-713b7276c366_generated_1a4ae9f9-212d-43d2-8163-2d206e327702_generated_video.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-                <div class="video-container">
-                    <video autoplay muted loop playsinline controls aria-label="IronEar system demonstration video 2">
-                        <source src="./_users_fcb64d5c-5b3a-49f5-b475-713b7276c366_generated_b1f0633b-4421-427c-b3e4-66b96f611f23_generated_video.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-                <div class="video-container">
-                    <video autoplay muted loop playsinline controls aria-label="IronEar system demonstration video 3">
-                        <source src="./_users_fcb64d5c-5b3a-49f5-b475-713b7276c366_generated_bb316db0-a284-4327-a124-7546a3cc6607_generated_video.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-                <div class="video-container">
-                    <video autoplay muted loop playsinline controls aria-label="IronEar system demonstration video 4">
-                        <source src="./_users_fcb64d5c-5b3a-49f5-b475-713b7276c366_generated_d5286246-a38f-4885-ac5c-ad1cdc1dbbeb_generated_video.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-                <div class="video-container">
-                    <video autoplay muted loop playsinline controls aria-label="IronEar system demonstration video 5">
-                        <source src="./_users_fcb64d5c-5b3a-49f5-b475-713b7276c366_generated_de827ea8-f3f7-4e65-b4e4-348d72c3c425_generated_video.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-                <div class="video-container">
-                    <video autoplay muted loop playsinline controls aria-label="IronEar system demonstration video 6">
-                        <source src="./_users_fcb64d5c-5b3a-49f5-b475-713b7276c366_generated_e090ef46-55cc-44a2-82dc-9ccba238e6b1_generated_video.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-                <div class="video-container">
-                    <video autoplay muted loop playsinline controls aria-label="IronEar system demonstration video 7">
-                        <source src="./_users_fcb64d5c-5b3a-49f5-b475-713b7276c366_generated_f9a22f51-e8a0-4373-8295-c6cc8198426c_generated_video.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Content -->
+    <div class="content">
+        <h1>IronEar</h1>
+        <p class="tagline">
+            Acoustic and RF intelligence<br>
+            Acoustic and RF meshing<br>
+            Swarm technology
+        </p>
+    </div>
 
     <script>
-        // Fade-in animations for hero elements
-        const fadeElements = document.querySelectorAll('.fade-in');
-        fadeElements.forEach((el, index) => {
-            setTimeout(() => {
-                el.style.opacity = '1';
-                el.style.transform = 'translateY(0)';
-            }, index * 200);
+        // Video rotation logic
+        const videos = [
+            document.getElementById('video1'),
+            document.getElementById('video2'),
+            document.getElementById('video3'),
+            document.getElementById('video4'),
+            document.getElementById('video5'),
+            document.getElementById('video6'),
+            document.getElementById('video7')
+        ];
+        
+        let currentVideoIndex = 0;
+        
+        // Start the first video with error handling
+        videos[0].classList.add('active');
+        videos[0].play().catch(err => {
+            console.log('Autoplay prevented, user interaction required:', err);
         });
+        
+        // Switch to next video
+        function switchToNextVideo() {
+            const currentVideo = videos[currentVideoIndex];
+            const nextIndex = (currentVideoIndex + 1) % videos.length;
+            const nextVideo = videos[nextIndex];
+            
+            // Fade out current video
+            currentVideo.classList.remove('active');
+            
+            // Fade in next video and play with error handling
+            nextVideo.classList.add('active');
+            nextVideo.play().catch(err => {
+                console.log('Video playback failed:', err);
+            });
+            
+            // Update index
+            currentVideoIndex = nextIndex;
+        }
+        
+        // Switch videos every 12 seconds
+        setInterval(switchToNextVideo, 12000);
     </script>
 </body>
 </html>
