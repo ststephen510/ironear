@@ -105,25 +105,25 @@
 <body>
     <!-- Background Video Container -->
     <div class="video-background">
-        <video id="video1" autoplay muted loop playsinline>
+        <video id="video1" autoplay muted loop playsinline preload="metadata">
             <source src="./video1.mp4" type="video/mp4">
         </video>
-        <video id="video2" muted loop playsinline>
+        <video id="video2" muted loop playsinline preload="metadata">
             <source src="./video2.mp4" type="video/mp4">
         </video>
-        <video id="video3" muted loop playsinline>
+        <video id="video3" muted loop playsinline preload="metadata">
             <source src="./video3.mp4" type="video/mp4">
         </video>
-        <video id="video4" muted loop playsinline>
+        <video id="video4" muted loop playsinline preload="metadata">
             <source src="./video4.mp4" type="video/mp4">
         </video>
-        <video id="video5" muted loop playsinline>
+        <video id="video5" muted loop playsinline preload="metadata">
             <source src="./video5.mp4" type="video/mp4">
         </video>
-        <video id="video6" muted loop playsinline>
+        <video id="video6" muted loop playsinline preload="metadata">
             <source src="./video6.mp4" type="video/mp4">
         </video>
-        <video id="video7" muted loop playsinline>
+        <video id="video7" muted loop playsinline preload="metadata">
             <source src="./video7.mp4" type="video/mp4">
         </video>
     </div>
@@ -152,15 +152,11 @@
         
         let currentVideoIndex = 0;
         
-        // Start the first video
+        // Start the first video with error handling
         videos[0].classList.add('active');
-        videos[0].play();
-        
-        // Preload next video
-        function preloadNextVideo() {
-            const nextIndex = (currentVideoIndex + 1) % videos.length;
-            videos[nextIndex].load();
-        }
+        videos[0].play().catch(err => {
+            console.log('Autoplay prevented, user interaction required:', err);
+        });
         
         // Switch to next video
         function switchToNextVideo() {
@@ -171,22 +167,18 @@
             // Fade out current video
             currentVideo.classList.remove('active');
             
-            // Fade in next video and play
+            // Fade in next video and play with error handling
             nextVideo.classList.add('active');
-            nextVideo.play();
+            nextVideo.play().catch(err => {
+                console.log('Video playback failed:', err);
+            });
             
             // Update index
             currentVideoIndex = nextIndex;
-            
-            // Preload the next one
-            preloadNextVideo();
         }
         
         // Switch videos every 12 seconds
         setInterval(switchToNextVideo, 12000);
-        
-        // Preload the second video
-        preloadNextVideo();
     </script>
 </body>
 </html>
