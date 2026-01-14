@@ -120,25 +120,25 @@
 <body>
     <!-- Background Video Container -->
     <div class="video-background">
-        <video id="video1" autoplay muted loop playsinline preload="metadata">
+        <video id="video1" autoplay muted playsinline preload="metadata">
             <source src="./video1.mp4" type="video/mp4">
         </video>
-        <video id="video2" muted loop playsinline preload="metadata">
+        <video id="video2" muted playsinline preload="metadata">
             <source src="./video2.mp4" type="video/mp4">
         </video>
-        <video id="video3" muted loop playsinline preload="metadata">
+        <video id="video3" muted playsinline preload="metadata">
             <source src="./video3.mp4" type="video/mp4">
         </video>
-        <video id="video4" muted loop playsinline preload="metadata">
+        <video id="video4" muted playsinline preload="metadata">
             <source src="./video4.mp4" type="video/mp4">
         </video>
-        <video id="video5" muted loop playsinline preload="metadata">
+        <video id="video5" muted playsinline preload="metadata">
             <source src="./video5.mp4" type="video/mp4">
         </video>
-        <video id="video6" muted loop playsinline preload="metadata">
+        <video id="video6" muted playsinline preload="metadata">
             <source src="./video6.mp4" type="video/mp4">
         </video>
-        <video id="video7" muted loop playsinline preload="metadata">
+        <video id="video7" muted playsinline preload="metadata">
             <source src="./video7.mp4" type="video/mp4">
         </video>
     </div>
@@ -165,6 +165,11 @@
         
         let currentVideoIndex = 0;
         
+        // Set playback speed to half for all videos
+        videos.forEach(video => {
+            video.playbackRate = 0.5;
+        });
+        
         // Start the first video with error handling
         videos[0].classList.add('active');
         videos[0].play().catch(err => {
@@ -180,6 +185,10 @@
             // Fade out current video
             currentVideo.classList.remove('active');
             
+            // Reset current video to beginning for next time
+            currentVideo.currentTime = 0;
+            currentVideo.pause();
+            
             // Fade in next video and play with error handling
             nextVideo.classList.add('active');
             nextVideo.play().catch(err => {
@@ -190,8 +199,15 @@
             currentVideoIndex = nextIndex;
         }
         
-        // Switch videos every 12 seconds
-        setInterval(switchToNextVideo, 12000);
+        // Add event listener to each video to switch when it ends
+        videos.forEach((video, index) => {
+            video.addEventListener('ended', () => {
+                // Only switch if this is the currently active video
+                if (index === currentVideoIndex) {
+                    switchToNextVideo();
+                }
+            });
+        });
     </script>
 </body>
 </html>
