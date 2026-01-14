@@ -164,6 +164,7 @@
         ];
         
         let currentVideoIndex = 0;
+        const TRANSITION_DURATION_MS = 2000; // Match CSS opacity transition duration (2s)
         
         // Set playback speed to normal for all videos
         videos.forEach(video => {
@@ -192,11 +193,11 @@
             });
             
             // Reset current video to beginning for next time AFTER fade completes
-            // Wait for the 2s opacity transition to finish before resetting
+            // Wait for the opacity transition to finish before resetting
             setTimeout(() => {
                 currentVideo.currentTime = 0;
                 currentVideo.pause();
-            }, 2000);
+            }, TRANSITION_DURATION_MS);
             
             // Update index
             currentVideoIndex = nextIndex;
