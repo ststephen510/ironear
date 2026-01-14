@@ -164,7 +164,9 @@
         ];
         
         let currentVideoIndex = 0;
+        let transitionTriggered = false;
         const TRANSITION_DURATION_MS = 2000; // Match CSS opacity transition duration (2s)
+        const TRANSITION_DURATION_S = TRANSITION_DURATION_MS / 1000; // 2 seconds
         
         // Set playback speed to normal (1x) for all videos
         videos.forEach(video => {
@@ -199,19 +201,21 @@
                 currentVideo.pause();
             }, TRANSITION_DURATION_MS);
             
-            // Update index
+            // Update index and reset transition flag
             currentVideoIndex = nextIndex;
+            transitionTriggered = false;
         }
         
         // Monitor video playback and trigger transition 2 seconds before end
         videos.forEach((video, index) => {
             video.addEventListener('timeupdate', () => {
                 // Only monitor the currently active video
-                if (index === currentVideoIndex && video.duration) {
+                if (index === currentVideoIndex && video.duration && !transitionTriggered) {
                     const timeRemaining = video.duration - video.currentTime;
                     
                     // Start transition 2 seconds before video ends
-                    if (timeRemaining <= TRANSITION_DURATION_MS / 1000 && timeRemaining > (TRANSITION_DURATION_MS / 1000) - 0.1) {
+                    if (timeRemaining <= TRANSITION_DURATION_S) {
+                        transitionTriggered = true;
                         switchToNextVideo();
                     }
                 }
@@ -219,12 +223,10 @@
             
             // Fallback: if video ends without triggering timeupdate transition
             video.addEventListener('ended', () => {
-                if (index === currentVideoIndex) {
+                if (index === currentVideoIndex && !transitionTriggered) {
                     // If we somehow didn't transition yet, do it now
-                    const nextIndex = (currentVideoIndex + 1) % videos.length;
-                    if (!videos[nextIndex].classList.contains('active')) {
-                        switchToNextVideo();
-                    }
+                    transitionTriggered = true;
+                    switchToNextVideo();
                 }
             });
         });
