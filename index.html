@@ -209,11 +209,12 @@
         // Monitor video playback and trigger transition 2 seconds before end
         videos.forEach((video, index) => {
             video.addEventListener('timeupdate', () => {
-                // Only monitor the currently active video
-                if (index === currentVideoIndex && video.duration && !transitionTriggered) {
+                // Only monitor the currently active video with valid duration
+                if (index === currentVideoIndex && isFinite(video.duration) && video.duration > 0 && !transitionTriggered) {
                     const timeRemaining = video.duration - video.currentTime;
                     
                     // Start transition 2 seconds before video ends
+                    // The transitionTriggered flag prevents duplicate triggers
                     if (timeRemaining <= TRANSITION_DURATION_S) {
                         transitionTriggered = true;
                         switchToNextVideo();
