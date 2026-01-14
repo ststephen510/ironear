@@ -164,10 +164,11 @@
         ];
         
         let currentVideoIndex = 0;
+        const TRANSITION_DURATION_MS = 2000; // Match CSS opacity transition duration (2s)
         
-        // Set playback speed to half for all videos
+        // Set playback speed to normal for all videos
         videos.forEach(video => {
-            video.playbackRate = 0.5;
+            video.playbackRate = 1.0;
         });
         
         // Start the first video with error handling
@@ -185,15 +186,18 @@
             // Fade out current video
             currentVideo.classList.remove('active');
             
-            // Reset current video to beginning for next time
-            currentVideo.currentTime = 0;
-            currentVideo.pause();
-            
             // Fade in next video and play with error handling
             nextVideo.classList.add('active');
             nextVideo.play().catch(err => {
                 console.log('Video playback failed:', err);
             });
+            
+            // Reset current video to beginning for next time AFTER fade completes
+            // Wait for the opacity transition to finish before resetting
+            setTimeout(() => {
+                currentVideo.currentTime = 0;
+                currentVideo.pause();
+            }, TRANSITION_DURATION_MS);
             
             // Update index
             currentVideoIndex = nextIndex;
