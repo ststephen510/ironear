@@ -164,9 +164,11 @@
         ];
         
         let currentVideoIndex = 0;
+        let transitionTriggered = false;
         const TRANSITION_DURATION_MS = 2000; // Match CSS opacity transition duration (2s)
+        const TRANSITION_DURATION_S = TRANSITION_DURATION_MS / 1000; // 2 seconds
         
-        // Set playback speed to normal for all videos
+        // Set playback speed to normal (1x) for all videos
         videos.forEach(video => {
             video.playbackRate = 1.0;
         });
@@ -183,14 +185,14 @@
             const nextIndex = (currentVideoIndex + 1) % videos.length;
             const nextVideo = videos[nextIndex];
             
-            // Fade out current video
-            currentVideo.classList.remove('active');
-            
-            // Fade in next video and play with error handling
-            nextVideo.classList.add('active');
+            // Start playing the next video (but keep it hidden for now)
             nextVideo.play().catch(err => {
                 console.log('Video playback failed:', err);
             });
+            
+            // Fade out current video and fade in next video simultaneously
+            currentVideo.classList.remove('active');
+            nextVideo.classList.add('active');
             
             // Reset current video to beginning for next time AFTER fade completes
             // Wait for the opacity transition to finish before resetting
@@ -199,15 +201,32 @@
                 currentVideo.pause();
             }, TRANSITION_DURATION_MS);
             
-            // Update index
+            // Update index and reset transition flag
             currentVideoIndex = nextIndex;
+            transitionTriggered = false;
         }
         
-        // Add event listener to each video to switch when it ends
+        // Monitor video playback and trigger transition 2 seconds before end
         videos.forEach((video, index) => {
+            video.addEventListener('timeupdate', () => {
+                // Only monitor the currently active video with valid duration
+                if (index === currentVideoIndex && isFinite(video.duration) && video.duration > 0 && !transitionTriggered) {
+                    const timeRemaining = video.duration - video.currentTime;
+                    
+                    // Start transition 2 seconds before video ends
+                    // The transitionTriggered flag prevents duplicate triggers
+                    if (timeRemaining <= TRANSITION_DURATION_S) {
+                        transitionTriggered = true;
+                        switchToNextVideo();
+                    }
+                }
+            });
+            
+            // Fallback: if video ends without triggering timeupdate transition
             video.addEventListener('ended', () => {
-                // Only switch if this is the currently active video
-                if (index === currentVideoIndex) {
+                if (index === currentVideoIndex && !transitionTriggered) {
+                    // If we somehow didn't transition yet, do it now
+                    transitionTriggered = true;
                     switchToNextVideo();
                 }
             });
